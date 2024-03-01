@@ -81,7 +81,8 @@ app.layout = dbc.Container([
 
 ], fluid=True, style={'text-align': 'center'})
 
-# Main statement below:
 
+
+# Main statement to debug:
 if __name__ == '__main__':
-    app.run_server(debug = True, host = '0.0.0.0', port = 7997)
+    app.run_server(debug = True)

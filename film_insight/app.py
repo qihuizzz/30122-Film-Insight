@@ -3,6 +3,7 @@ Code contributor: Everyone
 """
 import sys
 #from .dashboard import dash
+#from import xxxx
 
 def run_dashboard():
     """
@@ -11,8 +12,7 @@ def run_dashboard():
     """
     pass
     '''
-    app = dash.app
-    app.run_server(debug=False)
+    dash.run_server(debug=False)
     '''
 
 def run_scrape(): 
@@ -20,21 +20,21 @@ def run_scrape():
     Scrape Web Sites
     Written by:
     """
-    return ####
+    pass
 
 def run_clean():
     """
     Clean datasets
     Written by:  
     """
-    return ###
+    pass
 
 
 def run():
     """
     User enter an option and interact with the program
     """
-    print("Welcome to Cook County Food Accessibility and Security App!")
+    print("This is Film Insiht. How May I help you?")
     user_input = input(
         """Please Enter: 
                 (1) The Dashboard, 
