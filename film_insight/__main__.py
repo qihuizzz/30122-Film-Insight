@@ -1,3 +1,11 @@
+from . import app
+
+if __name__ == '__main__':
+    app.run()
+
+''''
+I thought you just copied the file below, but I keep the contents just in case. (Yuki)
+
 import sys
 import pathlib
 from .crawler import crawl
@@ -20,3 +28,4 @@ if __name__ == "__main__":
 
     print("Cleaning parks.json and writing to normalized_parks.json")
     clean()
+'''
