@@ -5,8 +5,8 @@ import requests
 import json
 
 # 文件名
-output_file = '烂番茄data.xlsx'
-data = pd.read_excel("烂番茄url.xlsx")
+output_file = 'data/rottentomatoes_data.xlsx'
+data = pd.read_excel("data/rottentomatoes_url.xlsx")
 
 
 def get_url_and_save(url, name, time_year, output_file):
@@ -31,19 +31,19 @@ def get_url_and_save(url, name, time_year, output_file):
     } for review in data['reviews']]
 
     all_data.extend(extracted_data)  # 将提取的数据添加到all_data中
-
+    print(all_data)
     # 保存数据到Excel文件
-    df = pd.DataFrame(all_data)
-    if os.path.exists(output_file):
-        with pd.ExcelWriter(output_file, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
-            df.to_excel(writer, index=False, header=False, startrow=writer.sheets['Sheet1'].max_row)
-    else:
-        df.to_excel(output_file, index=False)
-
+    # df = pd.DataFrame(all_data)
+    # if os.path.exists(output_file):
+    #     with pd.ExcelWriter(output_file, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
+    #         df.to_excel(writer, index=False, header=False, startrow=writer.sheets['Sheet1'].max_row)
+    # else:
+    #     df.to_excel(output_file, index=False)
 
 for index, row in data.iterrows():
     time.sleep(1)
     name = row['Movie Title']
     url = row['url']
-    time_year = row['时间']
+    time_year = row['year']
     get_url_and_save(url, name, time_year, output_file)
+    print(url, 'end', '-' * 30)

@@ -5,7 +5,7 @@ import csv
 import time
 import re
 import os
-data = pd.read_excel("url.xlsx")
+data = pd.read_excel("data/douban_url.xlsx")
 print(data)
 
 def get_url_and_save(url, name, date, output_file):
@@ -32,7 +32,7 @@ def get_url_and_save(url, name, date, output_file):
                 data_text = {
                     'name': name,
                     'year': date,
-                    '评分': i.select("span.rating")[0].get("title"),  # 获取属性
+                    'score': i.select("span.rating")[0].get("title"),  # 获取属性
 
                     'content': i.select("span.short")[0].get_text().replace("\n", '')  # 获取内容
                 }
@@ -41,29 +41,28 @@ def get_url_and_save(url, name, date, output_file):
                 data_text = {
                     'name': name,
                     'year': date,
-                    '评分': '评分为0',  # 获取属性
+                    'score': 'score 0',  # 获取属性
 
-                    'content': '数据出错'
+                    'content': 'wrong'
                 }
                 all_data.append(data_text)
-
+    print(all_data)
     # 保存数据到Excel文件
-    df = pd.DataFrame(all_data)
-    if os.path.exists(output_file):
-        with pd.ExcelWriter(output_file, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
-            df.to_excel(writer, index=False, header=False, startrow=writer.sheets['Sheet1'].max_row)
-    else:
-        df.to_excel(output_file, index=False)
-
+    # df = pd.DataFrame(all_data)
+    # if os.path.exists(output_file):
+    #     with pd.ExcelWriter(output_file, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
+    #         df.to_excel(writer, index=False, header=False, startrow=writer.sheets['Sheet1'].max_row)
+    # else:
+    #     df.to_excel(output_file, index=False)
 
 # 文件名
-output_file = 'result.xlsx'
+output_file = 'data/douban_data.xlsx'
 
 # 遍历Excel文件中的每一行，对每个URL执行get_url_and_save函数
 for index, row in data.iterrows():
     time.sleep(1)
-    name = row['电影名字']
+    name = row['name']
     url = row['url']
-    date = row['时间']
+    date = row['year']
     get_url_and_save(url, name, date, output_file)
-    print(url,'结束','-'*30)
+    print(url,'end','-'*30)
