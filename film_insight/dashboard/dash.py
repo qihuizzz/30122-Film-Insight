@@ -3,7 +3,7 @@ Code contributor: Fuyuki Tani
 '''
 
 import sys
-from .dash_prep import create_sentiment, create_date, word_count
+from .dash_prep import word_count
 from wordcloud import WordCloud
 import pathlib
 from dash import Dash, html, dcc
@@ -12,7 +12,7 @@ import plotly.express as px
 import pandas as pd
 
 
-### BELOW ARE THE DATA VISUALIZATION FUNCTIONS ###
+### DATA VISUALIZATION FUNCTIONS ###
 
 
 def plot_wordcloud_db():
@@ -53,7 +53,7 @@ def plot_wordcloud_rt():
     return fig
 
 
-### BELOW IS THE SETUP CODE FOR DASH ###
+### THE SETUP CODE FOR DASHBOARD ###
 
 # Setting data viz function returns as variables
 
