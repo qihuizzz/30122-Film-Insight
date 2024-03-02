@@ -13,11 +13,11 @@ from collections import Counter
 # data structures in the file "__main__.py" for data visulization. 
 
 # Loading in the data and setting them as global dataframe variables:
-db_data = pathlib.Path(__file__).parent / "../data/db_clean.csv"
-rt_data = pathlib.Path(__file__).parent / "../data/rt_clean.csv"
+db_data = pathlib.Path(__file__).parent / "../data/douban_clean.xlsx"
+rt_data = pathlib.Path(__file__).parent / "../data/rottentomatoes_clean.xlsx"
 
-df_db = pd.read_csv(db_data)
-df_rt = pd.read_csv(rt_data)
+df_db = pd.read_excel(db_data)
+df_rt = pd.read_excel(rt_data)
 
 
 ### BELOW ARE THE HELPER FUNCTIONS THAT WILL BE USED FOR DATA VISUALIZATION ###
