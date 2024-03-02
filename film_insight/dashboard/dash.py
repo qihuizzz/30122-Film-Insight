@@ -3,7 +3,7 @@ Code contributor: Fuyuki Tani
 '''
 
 import sys
-from .dash_prep import word_count
+from dash_prep import word_count
 from wordcloud import WordCloud
 import pathlib
 from dash import Dash, html, dcc
@@ -62,7 +62,7 @@ rt_wordcloud = plot_wordcloud_rt()
 
 
 # HTML page setup :) : 
-app = Dash(external_stylesheets = [dbc.themes.SIMPLEX])
+app = Dash(external_stylesheets = [dbc.themes.Quartz])
 app.layout = dbc.Container([
 
     html.Br(),

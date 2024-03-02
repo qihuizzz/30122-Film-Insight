@@ -9,6 +9,11 @@ readme = "README.md"
 python = "^3.12"
 pandas = "^2.2.1"
 requests = "^2.31.0"
+dash = "^2.16.0"
+wordcloud = "^1.9.3"
+openpyxl = "^3.1.2"
+jieba = "^0.42.1"
+gensim = "^4.3.2"
 
 
 [build-system]

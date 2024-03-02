@@ -1,5 +1,5 @@
 """
-Code contributor: Everyone
+Code contributor: Fuyuki Tani
 """
 import sys
 #from .dashboard import dash
