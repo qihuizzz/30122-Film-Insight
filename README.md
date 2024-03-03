@@ -9,12 +9,11 @@
 2. From the root directory, ``30122-Film-Insight``, run ``poetry install``.
 3. Run ``poetry shell``.
 4. Run ``poetry run python -m film_insight``.
-
-- You can choose:
-    1. The Dashboard, 
-    2. Scrape Data,
-    3. Clean Data
-    4. Quit App.
+- You can choose:  
+    (1) The Dashboard  
+    (2) Scrape Data  
+    (3) Clean Data  
+    (4) Quit App  
 
 ## 1: Data Visualization
 
