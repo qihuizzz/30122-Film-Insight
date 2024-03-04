@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from collections import Counter
-from data_clean import list_douban, list_rottentomatoes
+from .data_clean import list_douban, list_rottentomatoes
 from wordcloud import WordCloud
 import pathlib
 
@@ -23,7 +23,9 @@ cleaned_list = [item for item in list_rottentomatoes if item not in ["", None, "
 # transform the list into a DataFrame
 df_cleaned = pd.DataFrame(cleaned_list, columns=["word"])
 # save the DataFrame to an Excel file
-output_file_path = pathlib.Path(__file__).parent / "../data/rottentomatoes_word.xlsx"  # 您可以自定义文件名和路径
+output_file_path = (
+    pathlib.Path(__file__).parent / "../data/rottentomatoes_word.xlsx"
+)  # 您可以自定义文件名和路径
 df_cleaned.to_excel(output_file_path, index=False)
 print(f"clean list {output_file_path}")
 
@@ -32,7 +34,9 @@ def word_png(data1, data2):
     # calculate word frequency
     word_freq = Counter(data1[30:])
     # specify the font path for Chinese support
-    font_path = pathlib.Path(__file__).parent / "../tools/NotoSansSC-VariableFont_wght.ttf"
+    font_path = (
+        pathlib.Path(__file__).parent / "../tools/NotoSansSC-VariableFont_wght.ttf"
+    )
     # set word cloud parameters
     wordcloud = WordCloud(
         width=500, height=500, background_color="white", font_path=font_path
@@ -48,4 +52,7 @@ def word_png(data1, data2):
 
 # save the word cloud
 word_png(list_douban[30:], pathlib.Path(__file__).parent / "../image/douban_word.jpg")
-word_png(list_rottentomatoes[30:], pathlib.Path(__file__).parent / "../image/rottentomatoes_word.jpg")
+word_png(
+    list_rottentomatoes[30:],
+    pathlib.Path(__file__).parent / "../image/rottentomatoes_word.jpg",
+)
