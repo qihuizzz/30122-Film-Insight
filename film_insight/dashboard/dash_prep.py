@@ -2,51 +2,63 @@
 Code contributor: Fuyuki Tani
 '''
 
-import sys
+import requests
 import pathlib
 import pandas as pd
-import numpy as np
-from collections import Counter
-
-# These functions below take in the csvs that are the csvs that are created
-# from "preprocess", and format the csvs so that they're fit to use as Pandas
-# data structures in the file "__main__.py" for data visulization. 
-
-# Loading in the data and setting them as global dataframe variables:
-db_data = pathlib.Path(__file__).parent / "../data/douban_clean.xlsx"
-rt_data = pathlib.Path(__file__).parent / "../data/rottentomatoes_clean.xlsx"
-
-df_db = pd.read_excel(db_data)
-df_rt = pd.read_excel(rt_data)
+import time
+from bs4 import BeautifulSoup
+import os
+import shutil
 
 
-### BELOW ARE THE HELPER FUNCTIONS THAT WILL BE USED FOR DATA VISUALIZATION ###
+
+# ソースフォルダとデスティネーションフォルダのパスを指定
+source_folder = pathlib.Path(__file__).parent / '../image'
+destination_folder = pathlib.Path(__file__).parent / 'assets'
+
+def copy_images():
+    # もしデスティネーションフォルダが存在しなければ作成
+    if not destination_folder.exists():
+        destination_folder.mkdir(parents=True)
+
+    # ソースフォルダ内のすべてのファイルをコピー
+    for file_name in os.listdir(source_folder):
+        source_file = os.path.join(source_folder, file_name)
+        destination_file = os.path.join(destination_folder, file_name)
+        shutil.copy(source_file, destination_file)
 
 
-def word_count():
-    """
-    Returns:
-        This returns the db & rt dataframes it as a Pandas series. We have to
-        parse through the dataframe in order to count the salient words and
-        count the terms. Lastly, it's called when creating the wordcloud 
-        visualizations. 
-    """
 
-    # Initializing lists to create Pandas dataframes:
-    db_count = []
-    rt_count = []
 
-    # Parsing through the dataframes:
-    for val in df_db.clean_text.values:
-        db_count += eval(val)
+def get_douban_url(df):
+    urls = df['url'].astype(str)
+    
+    urls = urls.str.replace(r'/comments.*', '', regex=True)
+    
+    df['URL'] = urls
+    
+    return df
 
-    for val in df_rt.clean_text.values:
-        rt_count += eval(val)
 
-    # Converting the lists to a series, and saving it to a variable:
-    db_count = pd.Series(Counter(db_count)).sort_values(ascending = False)
-    rt_count = pd.Series(Counter(rt_count)).sort_values(ascending = False)
+def get_rotten_tomatoes_url(df):
+    df['URL'] = ''
+    
+    for i, row in df.iterrows():
+        title = row['Movie Title']
+        url = _helper_get_rotten_tomatoes_url(title)
+        df.at[i, 'URL'] = url
+        time.sleep(1)
+    
+    return df
 
-    # Return statement:
-    return db_count, rt_count
-
+def _helper_get_rotten_tomatoes_url(movie_title):
+    # Rotten Tomatoes の検索URLを作成
+    search_url = f"https://www.rottentomatoes.com/search?search={movie_title.replace(' ', '+')}"
+    
+    # 検索結果ページを取得
+    response = requests.get(search_url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    
+    elem = soup.select("#search-results > search-page-result:nth-child(2) > ul > search-page-media-row:nth-child(1) > a:nth-child(2)")
+    url = elem[0]['href']
+    return url

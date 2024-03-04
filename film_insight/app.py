@@ -7,13 +7,14 @@ url:https://github.com/uchicago-2023-capp30122/30122-project-cappyfoodies/tree/m
 
 import sys
 from .dashboard import dash_main
-
+from .dashboard import dash_prep
 
 def run_dashboard():
     """
     Running dashboard
     Written by Fuyuki Tani
     """
+    dash_prep.copy_images()
     dash_main.app.run_server(debug=False)
 
 
@@ -22,14 +23,24 @@ def run_scrape():
     Scrape Web Sites
     Written by:
     """
-    pass    
+    from film_insight.data_scraper import rottentomatoes_scraper
+    from film_insight.data_scraper import douban_scraper
 
 def run_clean():
     """
-    Clean datasets
-    Written by:  
+    Clean Data
+    Written by: 
     """
-    from film_insight import data_clean
+    from film_insight.data_process import data_clean
+    
+
+def run_plot():
+    """
+    Plot graphs from Data
+    Written by: 
+    """
+    from film_insight.data_process import wordcloud_analysis, sentiment_analysis, graph_analysis, LDA_analysis
+
 
 
 def run():
@@ -42,7 +53,8 @@ def run():
                 (1) Launch Dashboard
                 (2) Scrape Data
                 (3) Clean Data
-                (4) Quit
+                (4) Plot from Data
+                (5) Quit
                 Option: """)
     if user_input == "1":
         print("Launching Dashboard...")
@@ -53,5 +65,8 @@ def run():
     elif user_input == "3":
         print("Cleaning Data...")
         run_clean()
+    elif user_input == "4":
+        print("Plotting...")
+        run_plot()
     else:
         sys.exit()
