@@ -4,7 +4,6 @@ Code contributor: Fuyuki Tani
 Text part: written by Zirong Li
 '''
 
-import sys
 import pathlib
 from dash import Dash, html, dash_table, dcc, callback, Output, Input
 import dash_bootstrap_components as dbc
@@ -33,7 +32,7 @@ df_d = pd.read_excel(pathlib.Path(__file__).parent / '../data/douban_url.xlsx')
 df_rcom = pd.read_excel(pathlib.Path(__file__).parent / '../data/rottentomatoes_data.xlsx')
 df_dcom = pd.read_excel(pathlib.Path(__file__).parent / '../data/douban_data.xlsx')
 
-# Paths for LDA images
+# Paths for images
 WC_r = "assets/rottentomatoes_word.jpg"
 WC_d = "assets/douban_word.jpg"
 LDA_d = "assets/douban_LDA.png"
@@ -43,6 +42,8 @@ SA_r = "assets/Rottentomatoes Sentiment Analysis Confusion Matrix.png"
 TL_r = "assets/rottentomatoes_time.jpg"
 TL_d = "assets/douban_time.jpg"
 
+
+##### FUNCTION FOR DASHBOARD #####
 
 # Function to generate movie cards
 card_style = {'width': '12rem', 'height': '5rem'}
@@ -109,7 +110,7 @@ app.layout = dbc.Container([
         ], width=6),
     ], justify='center'),
 
-    # Sentiment Analysis Section
+    # Sentiment Analysis
     dbc.Row(html.H2("Sentiment Analysis"), justify='center', style={'margin-top': '20px'}),
     dbc.Row(html.P(note_SA)),
     dbc.Row([
@@ -125,7 +126,7 @@ app.layout = dbc.Container([
         ], width=6)
     ], justify='center'),
 
-    # Timeline Section
+    # Timeline
     dbc.Row(html.H2("Time Line"), justify='center', style={'margin-top': '20px'}),
     dbc.Row([
         dbc.Col([

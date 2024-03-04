@@ -25,13 +25,14 @@ def run_scrape():
     from film_insight.data_scraper import rottentomatoes_scraper
     from film_insight.data_scraper import douban_scraper
 
+
 def run_clean():
     """
     Clean Data
     """
     from film_insight.data_process import data_clean
     dash_prep.add_URL_column()
-    
+
 
 def run_plot():
     """
@@ -51,7 +52,7 @@ def run():
                 (1) Launch Dashboard
                 (2) Scrape Data
                 (3) Clean Data
-                (4) Plot from Data
+                (4) Plot Graphs from Data
                 (5) Quit
                 Option: """)
     if user_input == "1":
@@ -64,7 +65,7 @@ def run():
         print("Cleaning Data...")
         run_clean()
     elif user_input == "4":
-        print("Plotting...")
+        print("Plotting graphs...")
         run_plot()
     else:
         sys.exit()

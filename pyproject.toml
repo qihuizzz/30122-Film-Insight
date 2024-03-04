@@ -19,6 +19,7 @@ imbalanced-learn = "^0.12.0"
 seaborn = "^0.13.2"
 dash-bootstrap-components = "^1.5.0"
 pathlib = "^1.0.1"
+bs4 = "^0.0.2"
 
 
 [build-system]

@@ -1,21 +1,21 @@
 '''
 Code contributor: Fuyuki Tani
 '''
-
+import time
+import os
+import shutil
 import requests
 import pathlib
 import pandas as pd
-import time
 from bs4 import BeautifulSoup
-import os
-import shutil
 
-### BEFORE VISUALIZATION ###
 
 def copy_images():
     '''
     This function copies images from the source folder to the destination folder.
-    
+    !! Dash requires all images to put in assets folder. Since relative path 
+        doesn't work, I made this function.
+
     Input:
         None
     
@@ -41,6 +41,9 @@ def add_URL_column():
     '''
     This function adds a new 'URL' column to the DataFrame containing URLs.
     
+    !! Since movie List from scraping section doesn't include movie url,
+        I made this function.
+    
     Input:
         None
     
@@ -56,9 +59,6 @@ def add_URL_column():
 
     df_r.to_excel(pathlib.Path(__file__).parent / '../data/rottentomatoes_url.xlsx', index=False)
     df_d.to_excel(pathlib.Path(__file__).parent / '../data/douban_url.xlsx', index=False)
-
-
-
 
 
 def get_douban_url(df):
