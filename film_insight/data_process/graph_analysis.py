@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from data_clean import douban, rottentomatoes
+import pathlib
 
 
 # rottentomatoes analysis
@@ -51,7 +52,7 @@ lines, labels = ax1.get_legend_handles_labels()
 lines2, labels2 = ax2.get_legend_handles_labels()
 ax2.legend(lines + lines2, labels + labels2, loc="upper left")
 plt.tight_layout()
-plt.savefig("image/Rottentomatoes_time.jpg")
+plt.savefig(pathlib.Path(__file__).parent / "../image/Rottentomatoes_time.jpg")
 
 
 # douban analysis
@@ -104,5 +105,5 @@ lines, labels = ax1.get_legend_handles_labels()
 lines2, labels2 = ax2.get_legend_handles_labels()
 ax2.legend(lines + lines2, labels + labels2, loc="upper left")
 plt.tight_layout()
-plt.savefig("image/Douban_time.jpg")
+plt.savefig(pathlib.Path(__file__).parent / "../image/Douban_time.jpg")
 plt.show()

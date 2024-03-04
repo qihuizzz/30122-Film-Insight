@@ -10,18 +10,25 @@ from bs4 import BeautifulSoup
 import os
 import shutil
 
-
-
-# ソースフォルダとデスティネーションフォルダのパスを指定
-source_folder = pathlib.Path(__file__).parent / '../image'
-destination_folder = pathlib.Path(__file__).parent / 'assets'
+### BEFORE VISUALIZATION ###
 
 def copy_images():
-    # もしデスティネーションフォルダが存在しなければ作成
+    '''
+    This function copies images from the source folder to the destination folder.
+    
+    Input:
+        None
+    
+    Output:
+        None
+    '''
+    source_folder = pathlib.Path(__file__).parent / '../image'
+    destination_folder = pathlib.Path(__file__).parent / 'assets'
+    # If the destination folder doesn't exist, create it
     if not destination_folder.exists():
         destination_folder.mkdir(parents=True)
 
-    # ソースフォルダ内のすべてのファイルをコピー
+    # Copy all files from the source folder
     for file_name in os.listdir(source_folder):
         source_file = os.path.join(source_folder, file_name)
         destination_file = os.path.join(destination_folder, file_name)
@@ -30,7 +37,40 @@ def copy_images():
 
 
 
+def add_URL_column():
+    '''
+    This function adds a new 'URL' column to the DataFrame containing URLs.
+    
+    Input:
+        None
+    
+    Output:
+        None
+    '''
+    df_r = pd.read_excel(pathlib.Path(__file__).parent / '../data/rottentomatoes_url.xlsx')
+    df_d = pd.read_excel(pathlib.Path(__file__).parent / '../data/douban_url.xlsx')
+
+    print("Please wait while processing...")
+    df_r = get_rotten_tomatoes_url(df_r)
+    df_d = get_douban_url(df_d)
+
+    df_r.to_excel(pathlib.Path(__file__).parent / '../data/rottentomatoes_url.xlsx', index=False)
+    df_d.to_excel(pathlib.Path(__file__).parent / '../data/douban_url.xlsx', index=False)
+
+
+
+
+
 def get_douban_url(df):
+    '''
+    This function extracts URLs from the 'url' column in the DataFrame and adds them to a new 'URL' column.
+    
+    Input:
+        df: DataFrame - DataFrame containing URLs
+    
+    Output:
+        df: DataFrame - DataFrame with the 'URL' column added
+    '''
     urls = df['url'].astype(str)
     
     urls = urls.str.replace(r'/comments.*', '', regex=True)
@@ -41,21 +81,39 @@ def get_douban_url(df):
 
 
 def get_rotten_tomatoes_url(df):
+    '''
+    This function extracts Rotten Tomatoes URLs for movies from the DataFrame and adds them to a new 'URL' column.
+    
+    Input:
+        df: DataFrame - DataFrame containing movie titles
+    
+    Output:
+        df: DataFrame - DataFrame with the 'URL' column added
+    '''
     df['URL'] = ''
     
     for i, row in df.iterrows():
         title = row['Movie Title']
         url = _helper_get_rotten_tomatoes_url(title)
         df.at[i, 'URL'] = url
-        time.sleep(1)
+        time.sleep(3)
     
     return df
 
 def _helper_get_rotten_tomatoes_url(movie_title):
-    # Rotten Tomatoes の検索URLを作成
+    '''
+    This function retrieves the Rotten Tomatoes URL for a given movie title by scraping the Rotten Tomatoes website.
+    
+    Input:
+        movie_title: str - Title of the movie
+    
+    Output:
+        url: str - Rotten Tomatoes URL for the movie
+    '''
+    # Create the Rotten Tomatoes search URL
     search_url = f"https://www.rottentomatoes.com/search?search={movie_title.replace(' ', '+')}"
     
-    # 検索結果ページを取得
+    # Get the search results page
     response = requests.get(search_url)
     soup = BeautifulSoup(response.content, 'html.parser')
     

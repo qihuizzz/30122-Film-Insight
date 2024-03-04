@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import re
 import itertools
 from gensim import corpora, models
+import pathlib
 
 
 def LDA(data1, data2, data3, data4):
@@ -84,5 +85,5 @@ def LDA(data1, data2, data3, data4):
     print("=" * 30)
 
 
-LDA("data/douban_word.xlsx", "douban", "image/douban_LDA", 3)
-LDA("data/rottentomatoes_word.xlsx", "rottentomatoes", "image/rottentomatoes_LDA", 2)
+LDA(pathlib.Path(__file__).parent / "../data/douban_word.xlsx", "douban", pathlib.Path(__file__).parent / "../image/douban_LDA", 3)
+LDA(pathlib.Path(__file__).parent / "../data/rottentomatoes_word.xlsx", "rottentomatoes", pathlib.Path(__file__).parent / "../image/rottentomatoes_LDA", 2)

@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 import warnings
 import jieba
+import pathlib
 
 
 warnings.filterwarnings("ignore")
@@ -70,7 +71,8 @@ def generate_confusion_matrix(y_true, predictions, title):
     plt.ylabel("Actual")
     plt.xlabel("Predicted")
     plt.tight_layout()
-    plt.savefig(f"image/{title}.png")
+    save_path = pathlib.Path(__file__).parent / "image" / f"{title}.png"
+    plt.savefig(save_path)
     plt.show()
 
 
@@ -90,13 +92,13 @@ def process_and_visualize(df, fname, stop_words_file):
 
 if __name__ == "__main__":
     # Load datasets
-    df_douban = pd.read_excel("data/douban_clean_sentiment_analysis.xlsx")
+    df_douban = pd.read_excel(pathlib.Path(__file__).parent / "../data/douban_clean_sentiment_analysis.xlsx")
     df_douban["score"] = df_douban["score"].map(
         {"力荐": "1", "推荐": "2", "还行": "3", "较差": "4", "很差": "5"}
     )
 
     df_rottentomatoes = pd.read_excel(
-        "data/rottentomatoes_clean_sentiment_analysis.xlsx"
+        pathlib.Path(__file__).parent / "../data/rottentomatoes_clean_sentiment_analysis.xlsx"
     )
     df_rottentomatoes["score"] = df_rottentomatoes["score"].map(
         {
@@ -114,6 +116,6 @@ if __name__ == "__main__":
     )
 
     # Process and visualize
-    stop_words_file = "data/stop_words.txt"
+    stop_words_file = pathlib.Path(__file__).parent / "../data/stop_words.txt"
     process_and_visualize(df_douban, "Douban", stop_words_file)
     process_and_visualize(df_rottentomatoes, "Rottentomatoes", stop_words_file)

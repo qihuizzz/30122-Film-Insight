@@ -58,7 +58,7 @@ def generate_movie_cards(df):
     for index, row in df.iterrows():
         card = dbc.Card(
             dbc.CardBody([
-                html.H6(html.A(row.iloc[0], href=row.iloc[1], target="_blank"), className="card-title"),
+                html.H6(html.A(row.iloc[0], href=row.iloc[3], target="_blank"), className="card-title"),
                 html.P(f"Year: {row.iloc[2]}", className="card-year"),
             ]),
             style=card_style,
@@ -151,7 +151,7 @@ app.layout = dbc.Container([
     dbc.Row(generate_movie_cards(df_d)),
 
     # Reviews from RT
-    dbc.Row(html.H3("Reviews from Rotten Tomatoes"), justify='center', style={'margin-top': '20px'}),
+    dbc.Row(html.H3("Sample Reviews (Rotten Tomatoes)"), justify='center', style={'margin-top': '20px'}),
     dbc.Row([
         dcc.Dropdown(
             id='movie-dropdown-rt',
@@ -172,7 +172,7 @@ app.layout = dbc.Container([
     ]),
 
     # Reviews from DB
-    dbc.Row(html.H3("Reviews from Douban"), justify='center', style={'margin-top': '20px'}),
+    dbc.Row(html.H3("Sample Reviews (Douban)"), justify='center', style={'margin-top': '20px'}),
     dbc.Row([
         dcc.Dropdown(
             id='movie-dropdown-db',

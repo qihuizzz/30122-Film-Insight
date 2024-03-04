@@ -4,9 +4,10 @@ from bs4 import BeautifulSoup
 import time
 import re
 import os
+import pathlib
 
 
-data = pd.read_excel("data/douban_url.xlsx")
+data = pd.read_excel(pathlib.Path(__file__).parent / "../data/douban_url.xlsx")
 print(data)
 
 
@@ -64,7 +65,7 @@ def get_url_and_save(url, name, date, output_file):
         df.to_excel(output_file, index=False)
 
 
-output_file = "data/douban_data.xlsx"
+output_file = pathlib.Path(__file__).parent / "../data/douban_data.xlsx"
 
 # loop through the dataframe and scrape the data
 for index, row in data.iterrows():

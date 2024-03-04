@@ -3,10 +3,11 @@ import time
 import pandas as pd
 import requests
 import json
+import pathlib
 
 
-output_file = "data/rottentomatoes_data.xlsx"
-data = pd.read_excel("data/rottentomatoes_url.xlsx")
+output_file = pathlib.Path(__file__).parent / "../data/rottentomatoes_data.xlsx"
+data = pd.read_excel(pathlib.Path(__file__).parent / "../data/rottentomatoes_url.xlsx")
 
 
 def get_url_and_save(url, name, time_year, output_file):

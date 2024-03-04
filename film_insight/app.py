@@ -21,7 +21,6 @@ def run_dashboard():
 def run_scrape(): 
     """
     Scrape Web Sites
-    Written by:
     """
     from film_insight.data_scraper import rottentomatoes_scraper
     from film_insight.data_scraper import douban_scraper
@@ -29,15 +28,14 @@ def run_scrape():
 def run_clean():
     """
     Clean Data
-    Written by: 
     """
     from film_insight.data_process import data_clean
+    dash_prep.add_URL_column()
     
 
 def run_plot():
     """
     Plot graphs from Data
-    Written by: 
     """
     from film_insight.data_process import wordcloud_analysis, sentiment_analysis, graph_analysis, LDA_analysis
 
