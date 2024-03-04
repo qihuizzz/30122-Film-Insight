@@ -12,8 +12,9 @@
 - You can choose:  
     (1) The Dashboard  
     (2) Scrape Data  
-    (3) Clean Data  
-    (4) Quit App  
+    (3) Clean Data
+    (4) Plot from Data
+    (5) Quit App  
 
 ## 1: Data Visualization
 
@@ -24,12 +25,16 @@ This will open a port (7997) on the Flask app, and you will be able to see three
 2. ***
 3. ***
 
-## 2: Gathering the Data
+## 2: Gathering Data
 
 If you want to scrape the latest data, please type 2.
 In order to analyze the movie reviews, they need to be collected using web scraping from bean boards and rotten tomatoes. Web scraping process can take several minutes to run, so we have saved the json files down in the ``data`` directory. 
 
-## 3: Clean the Data
+## 3: Clean Data
 
 To transform the raw data scraped from both web sites into a useable cleaned format, please type 3.
 This creates two respective data file of cleaned data for each web sites in the the data folder in film-insights folder.
+
+## 4: Plot from Data
+
+[Explain Here]
