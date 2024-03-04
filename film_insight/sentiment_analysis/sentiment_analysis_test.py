@@ -62,13 +62,25 @@ def make_predictions(model, vect, data):
 ### Change output into plottly format ###
 import plotly.graph_objs as go
 
+import plotly.graph_objs as go
+
 def generate_confusion_matrix(y_true, predictions, title):
     cm = confusion_matrix(y_true, predictions)
     cm_normalized = cm.astype("float") / cm.sum(axis=1)[:, np.newaxis]
     cm_labels = ["Highly Recommended", "Recommended", "Fair", "Poor", "Very Poor"]
     cm_df = pd.DataFrame(data=cm_normalized, columns=cm_labels, index=cm_labels)
 
-    # Make plotly map
+    # Create a list to store annotations
+    annotations = []
+    for i, row in enumerate(cm_labels):
+        for j, val in enumerate(cm_labels):
+            annotations.append(
+                dict(text=str("{:.2f}".format(cm_normalized[i, j])),
+                     x=cm_labels[j], y=cm_labels[i],
+                     xref='x1', yref='y1',
+                     font=dict(color='black' if i != j else 'white'))
+            )
+
     heatmap = go.Heatmap(z=cm_df.values,
                          x=cm_labels,
                          y=cm_labels,
@@ -78,11 +90,14 @@ def generate_confusion_matrix(y_true, predictions, title):
 
     layout = go.Layout(title=title,
                        xaxis=dict(title='Predicted'),
-                       yaxis=dict(title='Actual'))
+                       yaxis=dict(title='Actual'),
+                       annotations=annotations)
 
     fig = go.Figure(data=[heatmap], layout=layout)
 
     return fig
+
+
 
 
 ### change ###
