@@ -32,4 +32,4 @@ In order to analyze the movie reviews, they need to be collected using web scrap
 ## 3: Clean the Data
 
 To transform the raw data scraped from both web sites into a useable cleaned format, please type 3.
-This creates two respective dataframes of cleaned data for each news source in the the data folder in film-insights folder.
+This creates two respective data file of cleaned data for each web sites in the the data folder in film-insights folder.

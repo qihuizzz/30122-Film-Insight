@@ -22,14 +22,14 @@ def run_scrape():
     Scrape Web Sites
     Written by:
     """
-    pass
+    pass    
 
 def run_clean():
     """
     Clean datasets
     Written by:  
     """
-    pass
+    from film_insight import data_clean
 
 
 def run():

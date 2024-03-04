@@ -1,12 +1,13 @@
-import pandas as pd
+import numpy as np
 import jieba
 import re
 import pandas as pd
+import pathlib
 
 
-douban = pd.read_excel("data/douban_data.xlsx")
+douban = pd.read_excel(pathlib.Path(__file__).parent / "data/douban_data.xlsx")
 print(douban)
-rottentomatoes = pd.read_excel("data/rottentomatoes_data.xlsx")
+rottentomatoes = pd.read_excel(pathlib.Path(__file__).parent / "data/rottentomatoes_data.xlsx")
 print(rottentomatoes)
 
 # rottentomatoes data cleaning
@@ -55,13 +56,13 @@ def processing(text, stopwords):
 
 
 # load stopwords in chinese
-stopwords = stopwordslist("data/china.txt")
+stopwords = stopwordslist(pathlib.Path(__file__).parent / "data/china.txt")
 
 douban["content"] = douban["content"].apply(lambda x: processing(x, stopwords))
 
 # remove rows that have missing values
 douban.dropna(subset=["content"], inplace=True)
-douban.to_excel("data/douban_clean.xlsx")
+douban.to_excel(pathlib.Path(__file__).parent / "data/douban_clean.xlsx")
 
 
 # rottentomatoes data cleaning more
@@ -102,7 +103,7 @@ def processing_en(text, stopwords):
 
 
 # upload stopwords in english
-stopwords_en = stopwordslist("data/english.txt")
+stopwords_en = stopwordslist(pathlib.Path(__file__).parent / "data/english.txt")
 rottentomatoes["content"] = rottentomatoes["content"].apply(
     lambda x: processing_en(x, stopwords_en)
 )
@@ -110,4 +111,4 @@ rottentomatoes["content"] = rottentomatoes["content"].apply(
 # remove rows that have missing values
 rottentomatoes.dropna(subset=["content"], inplace=True)
 
-rottentomatoes.to_excel("data/rottentomatoes_clean.xlsx")
+rottentomatoes.to_excel(pathlib.Path(__file__).parent / "data/rottentomatoes_clean.xlsx")
