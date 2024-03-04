@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from collections import Counter
-from data_clean import *
+from data_clean import list_douban, list_rottentomatoes
 from wordcloud import WordCloud
 
 
@@ -40,6 +40,7 @@ def word_png(data1, data2):
     plt.figure(figsize=(10, 5))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
+    plt.tight_layout()
     plt.savefig(data2, dpi=300)
     plt.show()
 

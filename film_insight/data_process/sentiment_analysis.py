@@ -64,12 +64,13 @@ def generate_confusion_matrix(y_true, predictions, title):
     cm_labels = ["Highly Recommended", "Recommended", "Fair", "Poor", "Very Poor"]
     cm_df = pd.DataFrame(data=cm_normalized, columns=cm_labels, index=cm_labels)
 
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(10, 8))
     sns.heatmap(cm_df, annot=True, fmt=".2f", cmap="YlGnBu")
     plt.title(title)
     plt.ylabel("Actual")
     plt.xlabel("Predicted")
-    plt.savefig(title + ".png")
+    plt.tight_layout()
+    plt.savefig(f"image/{title}.png")
     plt.show()
 
 
@@ -89,12 +90,14 @@ def process_and_visualize(df, fname, stop_words_file):
 
 if __name__ == "__main__":
     # Load datasets
-    df_douban = pd.read_excel("douban_clean_sentiment_analysis.xlsx")
+    df_douban = pd.read_excel("data/douban_clean_sentiment_analysis.xlsx")
     df_douban["score"] = df_douban["score"].map(
         {"力荐": "1", "推荐": "2", "还行": "3", "较差": "4", "很差": "5"}
     )
 
-    df_rottentomatoes = pd.read_excel("rottentomatoes_clean_sentiment_analysis.xlsx")
+    df_rottentomatoes = pd.read_excel(
+        "data/rottentomatoes_clean_sentiment_analysis.xlsx"
+    )
     df_rottentomatoes["score"] = df_rottentomatoes["score"].map(
         {
             5: "1",
@@ -111,6 +114,6 @@ if __name__ == "__main__":
     )
 
     # Process and visualize
-    stop_words_file = "stop_words.txt"
+    stop_words_file = "data/stop_words.txt"
     process_and_visualize(df_douban, "Douban", stop_words_file)
     process_and_visualize(df_rottentomatoes, "Rottentomatoes", stop_words_file)

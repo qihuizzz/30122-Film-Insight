@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import re
-from data_clean import *
 import itertools
 from gensim import corpora, models
 
@@ -74,6 +73,7 @@ def LDA(data1, data2, data3, data4):
     plt.xlabel(data2)
     plt.ylabel("average cosine similarity")
     plt.title("LDA analysis")
+    plt.tight_layout()
     plt.savefig(data3)
     print(f"{data2} Successfully saved")
     plt.show()

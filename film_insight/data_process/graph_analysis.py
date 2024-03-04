@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from data_clean import *
+from data_clean import douban, rottentomatoes
 
 
 # rottentomatoes analysis
@@ -50,6 +50,7 @@ ax2.tick_params(axis="y", labelcolor="r")
 lines, labels = ax1.get_legend_handles_labels()
 lines2, labels2 = ax2.get_legend_handles_labels()
 ax2.legend(lines + lines2, labels + labels2, loc="upper left")
+plt.tight_layout()
 plt.savefig("image/Rottentomatoes_time.jpg")
 
 
@@ -102,5 +103,6 @@ ax2.tick_params(axis="y", labelcolor="r")
 lines, labels = ax1.get_legend_handles_labels()
 lines2, labels2 = ax2.get_legend_handles_labels()
 ax2.legend(lines + lines2, labels + labels2, loc="upper left")
+plt.tight_layout()
 plt.savefig("image/Douban_time.jpg")
 plt.show()
