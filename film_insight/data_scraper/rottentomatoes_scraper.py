@@ -1,3 +1,7 @@
+'''
+Code contributor: Qihui Zhang & Zhen Wang
+'''
+
 import os
 import time
 import pandas as pd
