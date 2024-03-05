@@ -1,5 +1,5 @@
 '''
-Code contributor: Zirong Li & Qihui Zhang & Zhen Wang
+Code contributor: Zirong Li
 '''
 
 import pandas as pd
