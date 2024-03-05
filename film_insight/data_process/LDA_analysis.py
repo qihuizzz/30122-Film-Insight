@@ -1,5 +1,6 @@
-Qihui Zhang & Zhen Wang
-
+'''
+Code contributor: Qihui Zhang & Zhen Wang
+'''
 
 import pandas as pd
 import numpy as np
