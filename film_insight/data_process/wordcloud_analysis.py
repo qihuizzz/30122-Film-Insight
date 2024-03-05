@@ -1,3 +1,7 @@
+'''
+Code contributor: Zirong Li & Qihui Zhang & Zhen Wang
+'''
+
 import pandas as pd
 import matplotlib.pyplot as plt
 from collections import Counter
