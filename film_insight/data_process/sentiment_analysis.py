@@ -90,35 +90,34 @@ def process_and_visualize(df, fname, stop_words_file):
     )
 
 
-if __name__ == "__main__":
-    # Load datasets
-    df_douban = pd.read_excel(
-        pathlib.Path(__file__).parent / "../data/douban_clean_sentiment_analysis.xlsx"
-    )
-    df_douban["score"] = df_douban["score"].map(
-        {"力荐": "1", "推荐": "2", "还行": "3", "较差": "4", "很差": "5"}
-    )
+# Load datasets
+df_douban = pd.read_excel(
+    pathlib.Path(__file__).parent / "../data/douban_clean_sentiment_analysis.xlsx"
+)
+df_douban["score"] = df_douban["score"].map(
+    {"力荐": "1", "推荐": "2", "还行": "3", "较差": "4", "很差": "5"}
+)
 
-    df_rottentomatoes = pd.read_excel(
-        pathlib.Path(__file__).parent
-        / "../data/rottentomatoes_clean_sentiment_analysis.xlsx"
-    )
-    df_rottentomatoes["score"] = df_rottentomatoes["score"].map(
-        {
-            5: "1",
-            4.5: "1",
-            4: "2",
-            3.5: "2",
-            3: "3",
-            2.5: "3",
-            2: "4",
-            1.5: "4",
-            1: "5",
-            0.5: "5",
-        }
-    )
+df_rottentomatoes = pd.read_excel(
+    pathlib.Path(__file__).parent
+    / "../data/rottentomatoes_clean_sentiment_analysis.xlsx"
+)
+df_rottentomatoes["score"] = df_rottentomatoes["score"].map(
+    {
+        5: "1",
+        4.5: "1",
+        4: "2",
+        3.5: "2",
+        3: "3",
+        2.5: "3",
+        2: "4",
+        1.5: "4",
+        1: "5",
+        0.5: "5",
+    }
+)
 
-    # Process and visualize
-    stop_words_file = pathlib.Path(__file__).parent / "../data/stop_words.txt"
-    process_and_visualize(df_douban, "Douban", stop_words_file)
-    process_and_visualize(df_rottentomatoes, "Rottentomatoes", stop_words_file)
+# Process and visualize
+stop_words_file = pathlib.Path(__file__).parent / "../data/stop_words.txt"
+process_and_visualize(df_douban, "Douban", stop_words_file)
+process_and_visualize(df_rottentomatoes, "Rottentomatoes", stop_words_file)
