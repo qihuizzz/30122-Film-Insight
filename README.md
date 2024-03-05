@@ -1,6 +1,10 @@
 <h1>Film Insight</h1>
 
-[Write Description here.]
+This project focuses on the analysis of Chinese and American movie reviews. We extracted information such as movie names, ratings, release years, and reviews of war movies from China's Douban and the United States' Rotten Tomatoes websites. Our analysis covers four aspects to examine the differing reactions to war movies between China and the U.S.
+
+Firstly, we clean the data to remove characters that could interfere with the analysis. Then, we conduct sentiment analysis on the reviews and compare the sentiment scores with the actual ratings on the websites to assess the authenticity and effectiveness of the ratings. Next, we analyze the reviews of Chinese and American movies using word cloud visuals. Furthermore, we divide the timeline into three periods to compare the ratings of movies from different times between China and the U.S. Lastly, we perform LDA (Latent Dirichlet Allocation) topic analysis on the reviews and calculate the number of topic words for different websites using the average cosine rate.
+
+Given the linguistic differences between Chinese and English, we processed the data separately but aimed to present our findings in a directly comparable manner, highlighting the nuanced perceptions of war movies across cultures.
 
 
 ## Getting Started
