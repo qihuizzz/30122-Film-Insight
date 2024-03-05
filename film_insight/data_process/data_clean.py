@@ -1,3 +1,7 @@
+'''
+Code contributor: Qihui Zhang & Zhen Wang & Zirong Li & Fuyuki Tani
+'''
+
 import jieba
 import re
 import pandas as pd
