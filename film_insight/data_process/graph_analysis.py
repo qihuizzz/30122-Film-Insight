@@ -1,6 +1,7 @@
 '''
 Code contributor: Zhen Wang & Zirong Li
 '''
+
 import pandas as pd
 import matplotlib.pyplot as plt
 from .data_clean import douban, rottentomatoes
