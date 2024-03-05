@@ -1,3 +1,7 @@
+'''
+Code contributor: Qihui Zhang & Zhen Wang
+'''
+
 import pandas as pd
 import urllib.request
 from bs4 import BeautifulSoup
