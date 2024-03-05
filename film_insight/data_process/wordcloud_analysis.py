@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from collections import Counter
-from data_clean import list_douban, list_rottentomatoes
+from .data_clean import list_douban, list_rottentomatoes
 from wordcloud import WordCloud
 import pathlib
 

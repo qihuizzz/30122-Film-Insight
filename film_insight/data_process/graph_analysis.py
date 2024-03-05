@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from data_clean import douban, rottentomatoes
+from .data_clean import douban, rottentomatoes
 import pathlib
 
 
