@@ -25,12 +25,34 @@ Given the linguistic differences between Chinese and English, we processed the d
 If you just want to see the dashboard, press 1.  
 This will open a port, and you will be able to see plots and data below:
 
-1. Two word clouds, one with Douban data, and one with Rotten Tomatoes data. 
+1. Two word clouds, one with Douban data, and one with Rotten Tomatoes data.
+<p style="display: flex; justify-content: flex-start; gap: 10px;">
+  <img src="film_insight/image/douban_word.jpg" alt="Douban Word Cloud" width="400"/>
+  <img src="film_insight/image/rottentomatoes_word.jpg" alt="Rotten Tomatoes Word Cloud" width="400"/>
+</p>
+
 2. Two LDA analysis, one with Douban data, and one with Rotten Tomatoes data. 
+<p style="display: flex; justify-content: flex-start; gap: 10px;">
+  <img src="film_insight/image/douban_LDA.png" alt="Douban Word Cloud" width="400"/>
+  <img src="film_insight/image/rottentomatoes_LDA.png" alt="Rotten Tomatoes Word Cloud" width="400"/>
+</p>
+
 3. Two Sentiment Analysis, one with Douban data, and one with Rotten Tomatoes data. 
+<p style="display: flex; justify-content: flex-start; gap: 10px;">
+  <img src="film_insight/image/Douban Sentiment Analysis Confusion Matrix.png" alt="Douban Word Cloud" width="400"/>
+  <img src="film_insight/image/Rottentomatoes Sentiment Analysis Confusion Matrix.png" alt="Rotten Tomatoes Word Cloud" width="400"/>
+</p>
+
 4. Two Time Lines, one with Douban data, and one with Rotten Tomatoes data.
+<p style="display: flex; justify-content: flex-start; gap: 10px;">
+  <img src="film_insight/image/douban_time.jpg" alt="Douban Word Cloud" width="400"/>
+  <img src="film_insight/image/rottentomatoes_time.jpg" alt="Rotten Tomatoes Word Cloud" width="400"/>
+</p>
+
 5. Movie List we deal with. It includes the link to each sites.
+
 6. Sample movie reviews we scrape and analyse. You can filter by movie titile.
+
 
 ## 2: Gathering Data
 
